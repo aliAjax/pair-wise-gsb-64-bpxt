@@ -57,3 +57,12 @@ dt { color: #778481; } dd { margin: 0; text-align: right; max-width: 220px; }
 .deviation-list button.active { border-color: #1d5755; box-shadow: inset 3px 0 #1d5755; }.deviation-list button > div, .deviation-list footer { display: flex; justify-content: space-between; align-items: center; }
 .deviation-list strong { font-size: 14px; }.deviation-list span, .deviation-list small, .deviation-list footer span { color: #788683; font-size: 11px; }
 .reset-button { position: fixed; right: 20px; bottom: 14px; }
+.conflict-banner { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 0 0 12px; padding: 10px 12px; background: #fff4e5; border-left: 3px solid #e8a13a; color: #7a5410; font-size: 12px; line-height: 1.5; }
+.validation-text.review { color: #8a6d1f; background: #fdf6e3; border-left-color: #d0a436; }
+.basis-card { display: grid; gap: 5px; margin-top: 14px; padding: 12px; background: #eef6f0; border: 1px solid #cfe3d4; border-radius: 4px; }
+.basis-card strong { font-size: 12px; color: #1d5b3a; }
+.basis-card span { font-size: 11px; color: #4c6b58; }
+.signature-line { margin: 0 0 12px; padding: 9px 12px; background: #eef6f0; border-left: 3px solid #2e7d4f; color: #2b5a40; font-size: 11px; }
+.revision-panel { margin-top: 14px; }
+.revision-panel h3 { margin: 0 0 10px; font-size: 13px; }
+.persist-banner { padding: 10px 28px; background: #fde7e5; color: #a53026; border-bottom: 1px solid #f0c4bf; font-size: 12px; }

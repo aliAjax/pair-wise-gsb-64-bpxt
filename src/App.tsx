@@ -19,6 +19,7 @@ const navigation = [
 function Shell() {
   const dispatch = useDispatch<AppDispatch>()
   const openDeviations = useSelector((state: RootState) => state.haccp.deviations.filter((item) => item.status !== '已关闭').length)
+  const persistenceNotice = useSelector((state: RootState) => state.workspace.persistenceNotice)
   return (
     <div className="app-shell">
       <aside>
@@ -27,6 +28,7 @@ function Shell() {
         <div className="aside-note"><strong>生产日</strong><span>2026-09-29</span><small>数据源：本地持久化</small></div>
       </aside>
       <main>
+        {persistenceNotice && <div className="persist-banner">{persistenceNotice}</div>}
         <Routes>
           <Route path="/" element={<Overview />} />
           <Route path="/process" element={<ProcessControl />} />
