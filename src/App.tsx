@@ -8,6 +8,7 @@ import { Overview } from './views/Overview'
 import { ProcessControl } from './views/ProcessControl'
 import { DeviationWorkbench } from './views/DeviationWorkbench'
 import { AuditTrail } from './views/AuditTrail'
+import { PersistenceBanner } from './components/PersistenceBanner'
 
 const navigation = [
   ['/', '生产批次'],
@@ -19,14 +20,16 @@ const navigation = [
 function Shell() {
   const dispatch = useDispatch<AppDispatch>()
   const openDeviations = useSelector((state: RootState) => state.haccp.deviations.filter((item) => item.status !== '已关闭').length)
+  const pendingReview = useSelector((state: RootState) => state.haccp.batches.filter((item) => item.status === '待复核' && item.releaseBasis.signedBy).length)
   return (
     <div className="app-shell">
       <aside>
         <div className="brand"><b>H</b><div><strong>食品安全控制台</strong><small>HACCP批次与偏差追溯</small></div></div>
         <nav>{navigation.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'}><span>{label}</span>{label === '偏差调查' && <Badge appearance="filled" color="danger">{openDeviations}</Badge>}</NavLink>)}</nav>
-        <div className="aside-note"><strong>生产日</strong><span>2026-09-29</span><small>数据源：本地持久化</small></div>
+        <div className="aside-note"><strong>生产日</strong><span>2026-09-29</span><small>{pendingReview > 0 ? `${pendingReview}个已签批次待复核` : '数据源：本地持久化'}</small></div>
       </aside>
       <main>
+        <PersistenceBanner />
         <Routes>
           <Route path="/" element={<Overview />} />
           <Route path="/process" element={<ProcessControl />} />
